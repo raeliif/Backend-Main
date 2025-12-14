@@ -1,0 +1,581 @@
+{
+	"info": {
+		"_postman_id": "f8b14b1b-9a4e-47a5-94dc-64ad96606208",
+		"name": "Elif",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50721885",
+		"_collection_link": "https://raeliif-4278369.postman.co/workspace/elif's-Workspace~85e1d97f-be9f-4c28-845e-21c826c9ff02/collection/50721885-f8b14b1b-9a4e-47a5-94dc-64ad96606208?action=share&source=collection_link&creator=50721885"
+	},
+	"item": [
+		{
+			"name": "Mekan Ekle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var id = pm.response.json()._id;",
+							"pm.environment.set(\"venueid\", id);",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Bilgisayar Mühendisliği",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "SDÜ",
+							"type": "text"
+						},
+						{
+							"key": "foodanddrink",
+							"value": "Ders",
+							"type": "text"
+						},
+						{
+							"key": "lat",
+							"value": "37",
+							"type": "text"
+						},
+						{
+							"key": "long",
+							"value": "35",
+							"type": "text"
+						},
+						{
+							"key": "days1",
+							"value": "Pazartesi-Cuma",
+							"type": "text"
+						},
+						{
+							"key": "open1",
+							"value": "9",
+							"type": "text"
+						},
+						{
+							"key": "close1",
+							"value": "11",
+							"type": "text"
+						},
+						{
+							"key": "isClosed1",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "open2",
+							"value": "9",
+							"type": "text"
+						},
+						{
+							"key": "close2",
+							"value": "11",
+							"type": "text"
+						},
+						{
+							"key": "isClosed2",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "days2",
+							"value": "Cumartesi",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://backend-main-three.vercel.app/api/venues",
+					"protocol": "https",
+					"host": [
+						"backend-main-three",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"venues"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mekan Getir",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://backend-main-three.vercel.app/api/venues/{{venueid}}",
+					"protocol": "https",
+					"host": [
+						"backend-main-three",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"venues",
+						"{{venueid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mekan Listele",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://backend-main-three.vercel.app/api/venues?lat=37&long=35",
+					"protocol": "https",
+					"host": [
+						"backend-main-three",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"venues"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "37"
+						},
+						{
+							"key": "long",
+							"value": "35"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Yorum Ekle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var id = pm.response.json()._id",
+							"pm.environment.set(\"commentid\", id);",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "author",
+							"value": "SinanEce",
+							"type": "text"
+						},
+						{
+							"key": "rating",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "Ders çok iyi",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://backend-main-three.vercel.app/api/venues/{{venueid}}/comments",
+					"protocol": "https",
+					"host": [
+						"backend-main-three",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"venues",
+						"{{venueid}}",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Yorum Getir",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var id = pm.response.json().comment._id",
+							"pm.environment.set(\"commentid\", id);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://backend-main-three.vercel.app/api/venues/{{venueid}}/comments/{{commentid}}",
+					"protocol": "https",
+					"host": [
+						"backend-main-three",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"venues",
+						"{{venueid}}",
+						"comments",
+						"{{commentid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mekan Güncelle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Bil. Müh.",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "SDÜ Isparta",
+							"type": "text"
+						},
+						{
+							"key": "foodanddrink",
+							"value": "web",
+							"type": "text"
+						},
+						{
+							"key": "lat",
+							"value": "37",
+							"type": "text"
+						},
+						{
+							"key": "long",
+							"value": "35",
+							"type": "text"
+						},
+						{
+							"key": "days1",
+							"value": "Pazartesi-Cuma",
+							"type": "text"
+						},
+						{
+							"key": "open1",
+							"value": "9-11",
+							"type": "text"
+						},
+						{
+							"key": "close1",
+							"value": "9-11",
+							"type": "text"
+						},
+						{
+							"key": "isClosed1",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "days2",
+							"value": "Cumartesi",
+							"type": "text"
+						},
+						{
+							"key": "open2",
+							"value": "9-11",
+							"type": "text"
+						},
+						{
+							"key": "close2",
+							"value": "9-11",
+							"type": "text"
+						},
+						{
+							"key": "isClosed2",
+							"value": "false",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://backend-main-three.vercel.app/api/venues/{{venueid}}",
+					"protocol": "https",
+					"host": [
+						"backend-main-three",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"venues",
+						"{{venueid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Yorum Güncelle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "author",
+							"value": "Sinan",
+							"type": "text"
+						},
+						{
+							"key": "rating",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "text",
+							"value": "Harika olmuş",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://backend-main-three.vercel.app/api/venues/{{venueid}}/comments/{{commentid}}",
+					"protocol": "https",
+					"host": [
+						"backend-main-three",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"venues",
+						"{{venueid}}",
+						"comments",
+						"{{commentid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Yorum Sil",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://backend-main-three.vercel.app/api/venues/{{venueid}}/comments/{{commentid}}",
+					"protocol": "https",
+					"host": [
+						"backend-main-three",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"venues",
+						"{{venueid}}",
+						"comments",
+						"{{commentid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mekan Sil",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://backend-main-three.vercel.app/api/venues/{{venueid}}",
+					"protocol": "https",
+					"host": [
+						"backend-main-three",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"venues",
+						"{{venueid}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
